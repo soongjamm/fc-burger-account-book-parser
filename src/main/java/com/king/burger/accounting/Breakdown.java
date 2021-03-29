@@ -4,13 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 @ToString
 @NoArgsConstructor
@@ -32,7 +28,7 @@ public class Breakdown {
 
     @Id @GeneratedValue
     private Long id;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private Type type;
     @NotNull
     private String content;
