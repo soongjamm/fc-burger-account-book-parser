@@ -25,6 +25,9 @@ public class PdfParserController {
 
     @PostMapping("/pdf")
     public String parsePdf(@RequestParam("pdfFile") MultipartFile pdfFile) {
+        if (pdfFile.isEmpty()) {
+            return "redirect:pdf";
+        }
         pdfParser.parse(pdfFile);
         return "redirect:accountBook";
     }
