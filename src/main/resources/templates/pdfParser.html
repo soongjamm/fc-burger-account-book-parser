@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <th:block th:include="fragments/general.html :: headerfiles">
+    </th:block>
+</head>
+<body>
+<div th:replace="fragments/general.html :: navigator"></div>
+
+<p>pdf 파일을 추가하십쇼.</p>
+
+<form class="row g-3" action="/pdf" method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+        <input class="form-control" type="file" th:name="pdfFile"  accept="application/pdf">
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">등록y</button>
+    </div>
+</form>
+
+<div th:replace="fragments/general.html :: footer"></div>
+</body>
+</html>

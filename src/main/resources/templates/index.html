@@ -7,16 +7,12 @@
     </th:block>
 </head>
 <body>
+<div th:replace="fragments/general.html :: navigator"></div>
+
 <p>hello. fc burger king.</p>
 
-<form class="row g-3" action="/pdf" method="post" enctype="multipart/form-data">
-    <div class="mb-3">
-        <input class="form-control" type="file" th:name="pdfFile"  accept="application/pdf">
-    </div>
-    <div class="col-auto">
-        <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
-    </div>
-</form>
+<a href="/accountBook">전체 기록 보기</a><br>
+<a href="/pdf">pdf 파일 데이터베이스에 입력시키</a>
 
 <div th:replace="fragments/general.html :: footer"></div>
 </body>

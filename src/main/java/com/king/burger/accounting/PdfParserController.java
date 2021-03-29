@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import java.util.List;
 
 @Controller
 public class PdfParserController {
@@ -19,16 +17,16 @@ public class PdfParserController {
         this.pdfParser = pdfParser;
     }
 
-    @GetMapping
-    public String pdfDone() {
-        return "pdfResult";
+    @GetMapping("/pdf")
+    public String parsePdf() {
+        return "pdfParser";
     }
 
 
     @PostMapping("/pdf")
-    @ResponseBody
-    public List<AccountDay> parsePdf(@RequestParam("pdfFile") MultipartFile pdfFile) {
-        return pdfParser.parse(pdfFile);
+    public String parsePdf(@RequestParam("pdfFile") MultipartFile pdfFile) {
+        pdfParser.parse(pdfFile);
+        return "redirect:accountBook";
     }
 
 
