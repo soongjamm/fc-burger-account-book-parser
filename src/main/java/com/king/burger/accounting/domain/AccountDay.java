@@ -9,11 +9,11 @@ public class AccountDay {
     public final static String DELIMITER = "=";
 
     private LocalDate date;
-    private List<Breakdown> breakdowns;
+    private List<Details> detailsList;
 
-    public AccountDay(String line, List<Breakdown> details) {
+    public AccountDay(String line, List<Details> detailsList) {
         this.date = parseDate(line);
-        this.breakdowns = details;
+        this.detailsList = detailsList;
     }
 
     private LocalDate parseDate(String line) {
@@ -22,11 +22,10 @@ public class AccountDay {
         return DateParser.parse(pattern, parts[0]);
     }
 
-    @Override
-    public String toString() {
-        return "AccountDay{" +
-                "date=" + date +
-                ", breakdowns=" + breakdowns +
-                '}';
+    public Balance amountSum() {
+        return Balance.wons((long) detailsList.stream()
+                .mapToDouble(details -> details.getAmount())
+                .sum())
+                ;
     }
 }

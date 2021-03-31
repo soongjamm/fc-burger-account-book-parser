@@ -40,4 +40,8 @@ public abstract class Details {
         }
         return "0";
     }
+
+    public long getAmount() {
+        return amount.longValue();
+    }
 }
