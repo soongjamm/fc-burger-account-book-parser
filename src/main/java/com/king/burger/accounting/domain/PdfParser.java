@@ -22,14 +22,15 @@ public class PdfParser {
     @SneakyThrows
     public AccountBook parse(String pdfText) {
         List<String> pdfTexts = Arrays.asList(substringStartDelimiter(pdfText).split("\n"));
-        for (int i = 0; i < pdfTexts.size(); i++) { // 중간에 '=' 로 시작하는 행을 만나면 거기까지 한 묶음으로 해서 AccountDay 를 처리한다.
+        int firstLine = 0;
+
+        for (int i = 0; i < pdfTexts.size(); i++) {
             if (pdfTexts.get(i).startsWith(ACCOUNT_DAY_DELIMITER)) {
-                AccountDay accountDay = AccountDayFactory.makeAccountDay(pdfTexts.subList(0, i+1));
-                pdfTexts = pdfTexts.subList(i+1, pdfTexts.size()-1);
+                AccountDay accountDay = AccountDayFactory.create(pdfTexts.subList(firstLine, i + 1));
                 accountBook.add(accountDay);
+                firstLine = i + 1;
             }
         }
-
         return accountBook;
     }
 
