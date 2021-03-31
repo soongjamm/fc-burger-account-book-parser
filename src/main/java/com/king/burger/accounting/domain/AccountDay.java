@@ -22,8 +22,8 @@ public class AccountDay {
         return DateParser.parse(pattern, parts[0]);
     }
 
-    public Balance amountSum() {
-        return Balance.wons((long) detailsList.stream()
+    public Money amountSum() {
+        return Money.wons((long) detailsList.stream()
                 .mapToDouble(details -> details.getAmount())
                 .sum())
                 ;

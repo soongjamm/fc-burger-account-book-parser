@@ -11,11 +11,11 @@ public class AccountBook {
     }
 
     public void add(AccountDay accountDay) {
-        accountDays.put(accountDay, Balance.ZERO);
+        accountDays.put(accountDay, Money.ZERO);
     }
 
     private void reCalculateBalance() {
-        Balance accumulate = Balance.ZERO;
+        Money accumulate = Money.ZERO;
         for (AccountDay accountDay : accountDays.keySet()) {
             accumulate = accumulate.plus(accountDay.amountSum());
             accountDays.replace(accountDay, accumulate);
