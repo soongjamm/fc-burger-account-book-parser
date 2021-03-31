@@ -25,14 +25,15 @@ public abstract class Details {
     @SneakyThrows
     public void setDetails(String line) {
         NumberFormat numberFormat = DecimalFormat.getInstance();
-        String amount = findAmount(line);
+        String amount = extractAmount(line);
         String[] split = line.replace(sign, "").split(amount);
+
         this.content = split[0].trim();
         this.amount = BigDecimal.valueOf(numberFormat.parse(amount).doubleValue());
         this.memo = split.length > 1 ? split[1] : "";
     }
 
-    private String findAmount(String line) {
+    private String extractAmount(String line) {
         Pattern pattern = Pattern.compile(CURRENCY_REGEX_DETAILS);
         Matcher matcher = pattern.matcher(line);
         if (matcher.find()) {

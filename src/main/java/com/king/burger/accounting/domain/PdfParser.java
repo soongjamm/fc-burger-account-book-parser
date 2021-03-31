@@ -21,21 +21,21 @@ public class PdfParser {
 
     @SneakyThrows
     public AccountBook parse(String pdfText) {
-        List<String> pdfTexts = Arrays.asList(substringStartDelimiter(pdfText).split("\n"));
-        int firstLine = 0;
+        List<String> pdfTexts = Arrays.asList(skipSingleLine(pdfText).split("\n"));
+        int firstLineIndex = 0;
 
         for (int i = 0; i < pdfTexts.size(); i++) {
             if (pdfTexts.get(i).startsWith(ACCOUNT_DAY_DELIMITER)) {
-                AccountDay accountDay = AccountDayFactory.create(pdfTexts.subList(firstLine, i + 1));
-                accountBook.add(accountDay);
-                firstLine = i + 1;
+                List<String> targetLines = pdfTexts.subList(firstLineIndex, i + 1);
+                accountBook.add(AccountDayFactory.create(targetLines));
+                firstLineIndex = i + 1;
             }
         }
         return accountBook;
     }
 
     @SneakyThrows
-    private String substringStartDelimiter(String pdfText) {
+    private String skipSingleLine(String pdfText) {
         if (!pdfText.startsWith(FILE_STARTS_WITH)) {
             throw new IllegalArgumentException();
         }

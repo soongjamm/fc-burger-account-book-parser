@@ -14,7 +14,7 @@ public class DetailsFactory {
 
     private static Details stringToDetail(String line) {
         String firstCharacter = String.valueOf(line.charAt(0));
-        if (firstCharacter.startsWith("-")) {
+        if (firstCharacter.startsWith(Spending.SIGN)) {
             return new Spending(line);
         }
         return new Income(line);
