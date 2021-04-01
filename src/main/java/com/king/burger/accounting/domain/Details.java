@@ -13,7 +13,7 @@ public abstract class Details {
     public final static String CURRENCY_REGEX_DETAILS = "(,?\\d?\\d?\\d)?(,?\\d?\\d\\d){1,}+원?";
 
     protected String content;
-    protected BigDecimal amount;
+    protected Money amount;
     protected String memo;
     protected String sign;
 
@@ -29,7 +29,7 @@ public abstract class Details {
         String[] split = line.replace(sign, "").split(amount);
 
         this.content = split[0].trim();
-        this.amount = BigDecimal.valueOf(numberFormat.parse(amount).doubleValue());
+        this.amount = Money.wons(numberFormat.parse(amount).longValue());
         this.memo = split.length > 1 ? split[1] : "";
     }
 
@@ -42,7 +42,7 @@ public abstract class Details {
         return "0";
     }
 
-    public long getAmount() {
-        return amount.longValue();
+    public Money getAmount() {
+        return amount;
     }
 }

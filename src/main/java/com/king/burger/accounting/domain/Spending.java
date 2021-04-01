@@ -7,7 +7,7 @@ public class Spending extends Details {
     }
 
     @Override
-    public long getAmount() {
-        return -super.getAmount();
+    public Money getAmount() {
+        return amount.multiply(-1L);
     }
 }

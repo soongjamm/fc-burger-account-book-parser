@@ -10,10 +10,14 @@ public class AccountDay {
 
     private LocalDate date;
     private List<Details> detailsList;
+    private AccountDay previous;
+    private Money balance;
 
-    public AccountDay(String line, List<Details> detailsList) {
+    public AccountDay(String line, List<Details> detailsList, AccountDay last) {
         this.date = parseDate(line);
         this.detailsList = detailsList;
+        this.previous = last;
+        this.balance = calculateBalance();
     }
 
     private LocalDate parseDate(String line) {
@@ -22,10 +26,20 @@ public class AccountDay {
         return DateParser.parse(pattern, parts[0]);
     }
 
-    public Money amountSum() {
-        return Money.wons((long) detailsList.stream()
-                .mapToDouble(details -> details.getAmount())
-                .sum())
-                ;
+
+    private Money calculateBalance() {
+        if (previous == null) {
+            return amountSum();
+        } else {
+            return previous.balance.plus(amountSum());
+        }
+    }
+
+    private Money amountSum() {
+        Money sum = Money.ZERO;
+        for (Details details : detailsList) {
+            sum = sum.plus(details.getAmount());
+        }
+        return sum;
     }
 }

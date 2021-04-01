@@ -2,7 +2,7 @@ package com.king.burger.accounting.domain;
 
 import java.math.BigDecimal;
 
-public class Money extends Balance {
+public class Money {
 
     private BigDecimal amount;
 
@@ -26,6 +26,10 @@ public class Money extends Balance {
 
     @Override
     public String toString() {
-        return "잔액 : " + amount.toBigInteger() + "원\n";
+        return amount.toBigInteger() + "원\n";
+    }
+
+    public Money multiply(long i) {
+        return new Money(amount.multiply(BigDecimal.valueOf(i)));
     }
 }

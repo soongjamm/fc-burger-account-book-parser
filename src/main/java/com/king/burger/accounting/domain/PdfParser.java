@@ -12,7 +12,6 @@ public class PdfParser {
     private final static String ACCOUNT_DAY_DELIMITER = "=";
     private final static String FILE_STARTS_WITH = "축구공금";
 
-
     private AccountBook accountBook;
 
     public PdfParser() {
@@ -27,7 +26,7 @@ public class PdfParser {
         for (int i = 0; i < pdfTexts.size(); i++) {
             if (pdfTexts.get(i).startsWith(ACCOUNT_DAY_DELIMITER)) {
                 List<String> targetLines = pdfTexts.subList(firstLineIndex, i + 1);
-                accountBook.add(AccountDayFactory.create(targetLines));
+                accountBook.add(AccountDayFactory.create(targetLines, accountBook.getLast()));
                 firstLineIndex = i + 1;
             }
         }
