@@ -21,13 +21,13 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="breakdown: ${accountDay.getBreakdowns()}">
-        <td th:if="${breakdown.getType().toString == 'SPENDING'}" th:class="text-primary">지출</td>
-        <td th:if="${breakdown.getType().toString == 'INCOME'}" th:class="text-danger">수익</td>
-        <td> <span th:if="${breakdown.getType().toString() == 'INCOME'}" th:text="${breakdown.getAmount().intValue()}"> </span>
-             <span th:unless="${breakdown.getType().toString() == 'INCOME'}" th:text="-${breakdown.getAmount().intValue()}"> </span></td>
-        <td th:text="${breakdown.getContent()}"></td>
-        <td th:text="${breakdown.getMemo()}"></td>
+    <tr th:each="details: ${accountDay.getBreakdowns()}">
+        <td th:if="${details.getType().toString == 'SPENDING'}" th:class="text-primary">지출</td>
+        <td th:if="${details.getType().toString == 'INCOME'}" th:class="text-danger">수익</td>
+        <td> <span th:if="${details.getType().toString() == 'INCOME'}" th:text="${details.getAmount().intValue()}"> </span>
+             <span th:unless="${details.getType().toString() == 'INCOME'}" th:text="-${details.getAmount().intValue()}"> </span></td>
+        <td th:text="${details.getContent()}"></td>
+        <td th:text="${details.getMemo()}"></td>
     </tr>
     </tbody>
     <h5>잔액 : <span th:text="${accountDay.getBalance()}"></span>원</span></h5>

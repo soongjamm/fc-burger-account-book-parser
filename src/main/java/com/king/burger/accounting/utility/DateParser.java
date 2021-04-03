@@ -1,4 +1,4 @@
-package com.king.burger.accounting.domain;
+package com.king.burger.accounting.utility;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

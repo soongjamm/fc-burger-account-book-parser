@@ -1,5 +1,7 @@
 package com.king.burger.accounting.domain;
 
+import com.king.burger.accounting.utility.Money;
+
 public class Spending extends Details {
     public static String SIGN = "-";
     public Spending(String line) {
