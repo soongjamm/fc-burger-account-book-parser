@@ -1,7 +1,7 @@
 package com.king.burger.accounting.utility;
 
 import com.king.burger.accounting.domain.AccountBook;
-import com.king.burger.accounting.domain.AccountDayFactory;
+import com.king.burger.accounting.factory.AccountDayFactory;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 

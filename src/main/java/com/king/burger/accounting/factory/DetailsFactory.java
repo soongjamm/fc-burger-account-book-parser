@@ -1,4 +1,8 @@
-package com.king.burger.accounting.domain;
+package com.king.burger.accounting.factory;
+
+import com.king.burger.accounting.domain.Details;
+import com.king.burger.accounting.domain.Income;
+import com.king.burger.accounting.domain.Spending;
 
 import java.util.List;
 import java.util.stream.Collectors;

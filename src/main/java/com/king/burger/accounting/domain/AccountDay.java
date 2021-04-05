@@ -1,5 +1,6 @@
 package com.king.burger.accounting.domain;
 
+import com.king.burger.accounting.factory.DetailsFactory;
 import com.king.burger.accounting.utility.DateParser;
 import com.king.burger.accounting.utility.Money;
 
