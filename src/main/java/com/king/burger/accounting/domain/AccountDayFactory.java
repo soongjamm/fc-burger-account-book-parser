@@ -7,9 +7,7 @@ public class AccountDayFactory {
     public static AccountDay create(List<String> lines, AccountDay last) {
         List<String> detailsLines = lines.subList(0, lines.size() - 1);
         String accountDayLine = lines.get(lines.size() - 1);
-        List<Details> details = DetailsFactory.create(detailsLines);
-
-        AccountDay accountDay = new AccountDay(accountDayLine, details, last);
+        AccountDay accountDay = new AccountDay(accountDayLine, detailsLines, last);
         return accountDay;
     }
 }

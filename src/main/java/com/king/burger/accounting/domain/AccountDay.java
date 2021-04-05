@@ -16,9 +16,9 @@ public class AccountDay {
     private AccountDay previous;
     private Money balance;
 
-    public AccountDay(String line, List<Details> detailsList, AccountDay last) {
+    public AccountDay(String line, List<String> detailsLines, AccountDay last) {
         this.date = parseDate(line);
-        this.detailsList = detailsList;
+        this.detailsList = DetailsFactory.create(detailsLines);
         this.previous = last;
         this.balance = calculateBalance();
     }
