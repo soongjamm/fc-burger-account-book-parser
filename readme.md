@@ -1,6 +1,11 @@
 # FC 버거킹 가계부
 FC 버거킹의 회비 사용 내역 PDF 파일을 parsing 하는 parser
 
+- 파싱 전 
+<img src="https://postfiles.pstatic.net/MjAyMTA0MTJfMTcx/MDAxNjE4MjA5NDg0MjQy.LJgjjS5efkH-ii2ws9L9AYPbjqAAD-QLUQGbD5RV36wg.7uEDOE_VWFZ1vId4_WD6JsYjhdE-RdvGfUZsqDnAYjgg.PNG.securityst/SE-4b718a24-b6d9-46d1-89e3-9df30e2ae430.png?type=w580">
+- 파싱 후
+<img src="https://postfiles.pstatic.net/MjAyMTA0MTJfMTk2/MDAxNjE4MjEwMzYwMjIw.KiTmOz3gc5HKuxIHudXLYkjAQHpACfLYeLL9ktkVTqUg.G43MOpOlqFzmPtjlhcCWL0ygx-mplDNrVXGFgS2xn7gg.PNG.securityst/SE-151e493a-2294-462c-88fb-9e0a24bec06c.png?type=w580">
+
 ## 개념 정리
 - 회비 사용 내역을 기록한 PDF 파일을 장부라고 함
 - 잔액을 기록한 날을 결산일 이라 하고, 각 결산은 `=` 를 기준으로 나누어진다. (사용내역이 끝나고 `=`이 나타난다.)
