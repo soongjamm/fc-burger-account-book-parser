@@ -1,7 +1,7 @@
 # FC 버거킹 가계부
 FC 버거킹의 회비 사용 내역 PDF 파일을 parsing 하는 parser
 
-- 파싱 전 
+- 파싱 전 (pdf) 
 <img src="https://postfiles.pstatic.net/MjAyMTA0MTJfMTcx/MDAxNjE4MjA5NDg0MjQy.LJgjjS5efkH-ii2ws9L9AYPbjqAAD-QLUQGbD5RV36wg.7uEDOE_VWFZ1vId4_WD6JsYjhdE-RdvGfUZsqDnAYjgg.PNG.securityst/SE-4b718a24-b6d9-46d1-89e3-9df30e2ae430.png?type=w580">
 - 파싱 후
 <img src="https://postfiles.pstatic.net/MjAyMTA0MTJfMTk2/MDAxNjE4MjEwMzYwMjIw.KiTmOz3gc5HKuxIHudXLYkjAQHpACfLYeLL9ktkVTqUg.G43MOpOlqFzmPtjlhcCWL0ygx-mplDNrVXGFgS2xn7gg.PNG.securityst/SE-151e493a-2294-462c-88fb-9e0a24bec06c.png?type=w580">
@@ -19,10 +19,10 @@ FC 버거킹의 회비 사용 내역 PDF 파일을 parsing 하는 parser
 - [ ] ~~결산 날짜가 null 인 경우 기본값을 줘야함 -> 정확한 정보를 위해 안주는게 나을 듯.~~
 - [ ] 날짜에 연도는 작성되있지 않으므로 2020으로 시작해서 계산후 추가해줘야 함. 
 - [x] ~~key-value 형태로 (결산, 잔액) 저장하고, 장부의 신뢰성을 위해 각 결산이 앞뒤 결산의 정보를 가져야 함~~    
-  -> LinkedHashMap 을 사용해서 (결산, 잔액) 맵 구조와 순서를 보장.
+  -> AccountDay (결산) 마다 잔액 필드를 만들고, 이전 결산의 객체를 가진다.  
 - [x] 모든 정보를 장부에 담아서 반환
 
 
 
 # Troubleshooting 
-- https://stackoverflow.com/questions/2302802/how-to-fix-the-hibernate-object-references-an-unsaved-transient-instance-save
+~~- https://stackoverflow.com/questions/2302802/how-to-fix-the-hibernate-object-references-an-unsaved-transient-instance-save~~
