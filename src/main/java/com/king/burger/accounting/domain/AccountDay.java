@@ -46,4 +46,14 @@ public class AccountDay {
         }
         return sum;
     }
+
+    @Override
+    public String toString() {
+        return "AccountDay{" +
+                "\n\tdate=" + date +
+                ",\n\tdetailsList=" + detailsList +
+                ",\n\tprevious=" + (previous!=null) +
+                ",\n\tbalance=" + balance +
+                '}';
+    }
 }

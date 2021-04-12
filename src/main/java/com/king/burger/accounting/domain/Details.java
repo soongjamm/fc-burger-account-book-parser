@@ -23,7 +23,7 @@ public abstract class Details {
     }
 
     @SneakyThrows
-    public void setDetails(String line) {
+    private void setDetails(String line) {
         NumberFormat numberFormat = DecimalFormat.getInstance();
         String amount = extractAmount(line);
         String[] split = line.replace(sign, "").split(amount);
@@ -44,5 +44,14 @@ public abstract class Details {
 
     public Money getAmount() {
         return amount;
+    }
+
+    @Override
+    public String toString() {
+        return "\n\tDetails{" +
+                " 내역 : '" + content + '\'' +
+                ", 금액 : " + sign + amount +
+                (memo.length() > 0 ? ", memo='" + memo + '\'' : "") +
+                '}';
     }
 }

@@ -26,7 +26,7 @@ public class Money {
 
     @Override
     public String toString() {
-        return amount.toBigInteger() + "원\n";
+        return amount.toBigInteger() + "원";
     }
 
     public Money multiply(long i) {

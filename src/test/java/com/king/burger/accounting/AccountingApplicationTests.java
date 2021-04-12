@@ -1,5 +1,7 @@
 package com.king.burger.accounting;
 
+import com.king.burger.accounting.domain.AccountBook;
+import com.king.burger.accounting.domain.AccountDay;
 import com.king.burger.accounting.utility.PdfParser;
 import lombok.SneakyThrows;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -11,6 +13,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.text.DecimalFormat;
 import java.text.ParseException;
+import java.util.LinkedList;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -35,7 +38,11 @@ class AccountingApplicationTests {
     @Test
     void parse() {
         PdfParser pdfParser = new PdfParser();
-        pdfParser.parse(loadPdfText());
+        AccountBook book = pdfParser.parse(loadPdfText());
+        LinkedList<AccountDay> accountDays = book.getAccountDays();
+        for (AccountDay accountDay : accountDays) {
+            System.out.println(accountDay);
+        }
     }
 
     @Test
@@ -52,7 +59,7 @@ class AccountingApplicationTests {
 
 
     private Method getExtractPdfTextAccount() throws NoSuchMethodException {
-        Method extractPdfTextAccount = PdfParser.class.getDeclaredMethod("substringStartDelimiter", String.class);
+        Method extractPdfTextAccount = PdfParser.class.getDeclaredMethod("skipSingleLine", String.class);
         extractPdfTextAccount.setAccessible(true);
         return extractPdfTextAccount;
     }
